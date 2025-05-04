@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Welcome | Tax Calculator</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .welcome-message {
+      font-size: 20px;
+      margin-bottom: 20px;
+      font-weight: bold;
+    }
+
+    .benefits-list {
+      margin: 20px 0;
+      padding-left: 20px;
+    }
+
+    .benefits-list li {
+      margin-bottom: 10px;
+    }
+
+    .btn-group {
+      display: flex;
+      gap: 20px;
+      margin-top: 20px;
+      justify-content: center;
+    }
+
+    .logout-btn {
+      background: #ff4d4d;
+    }
+
+    .logout-btn:hover {
+      background: #cc0000;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+    <header class="header">
+      <div class="icon">🎉</div>
+      <h1 class="title">Welcome!</h1>
+      <p class="subtitle">You're successfully logged in.</p>
+    </header>
+
+    <main class="container">
+      <p id="welcomeUser" class="welcome-message">Hello!</p>
+
+      <section class="card">
+        <h2>What Can You Do Here?</h2>
+        <p>
+          Our Income Tax Calculator lets you:
+        </p>
+        <ul class="benefits-list">
+          <li>Compare tax under Old and New Regimes</li>
+          <li>Include HRA, Deductions, and Rent details</li>
+          <li>Get personalized regime recommendations</li>
+          <li>Understand how your income affects tax liability</li>
+        </ul>
+      </section>
+
+      <div class="btn-group">
+        <button class="primary-btn" onclick="window.location.href='index.html'">Start Calculating</button>
+        <button class="primary-btn logout-btn" onclick="logout()">Logout</button>
+      </div>
+    </main>
+  </div>
+
+  <script>
+    const storedUser = JSON.parse(localStorage.getItem("user"));
+    const welcomeUser = document.getElementById("welcomeUser");
+
+    if (storedUser && storedUser.username) {
+      welcomeUser.innerText = `Hello, ${storedUser.username}! 👋`;
+    } else {
+      window.location.href = "login.html"; // redirect if not logged in
+    }
+
+    function logout() {
+      localStorage.removeItem("user");
+      window.location.href = "login.html";
+    }
+  </script>
+</body>
+</html>

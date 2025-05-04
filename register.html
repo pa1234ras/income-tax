@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Register | Income Tax Calculator</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="wrapper">
+    <header class="header">
+      <div class="icon">📝</div>
+      <h1 class="title">Create Account</h1>
+      <p class="subtitle">Register to use the Income Tax Calculator</p>
+    </header>
+
+    <main class="container">
+      <section class="auth-card">
+        <label>Email (optional)</label>
+        <input type="email" id="email" placeholder="Enter your email" />
+
+        <label>Phone Number (optional)</label>
+        <input type="tel" id="phone" placeholder="Enter your phone number" />
+
+        <label>Username</label>
+        <input type="text" id="username" placeholder="Choose a username" />
+
+        <label>Password</label>
+        <input type="password" id="password" placeholder="Enter password" />
+
+        <label>Confirm Password</label>
+        <input type="password" id="confirmPassword" placeholder="Confirm password" />
+
+        <button class="primary-btn" onclick="register()">Register</button>
+
+        <p class="auth-footer">
+          <a href="login.html">Already have an account? Login</a>
+        </p>
+
+        <p id="message" class="recommendation" style="margin-top: 10px;"></p>
+      </section>
+    </main>
+  </div>
+
+  <script>
+    function register() {
+      const email = document.getElementById("email").value.trim();
+      const phone = document.getElementById("phone").value.trim();
+      const username = document.getElementById("username").value.trim();
+      const password = document.getElementById("password").value.trim();
+      const confirmPassword = document.getElementById("confirmPassword").value.trim();
+      const message = document.getElementById("message");
+
+      message.style.color = "red";
+
+      if (!username || !password || !confirmPassword) {
+        message.innerText = "Username and passwords are required.";
+        return;
+      }
+
+      if (!email && !phone) {
+        message.innerText = "Please enter at least Email or Phone number.";
+        return;
+      }
+
+      if (email && !validateEmail(email)) {
+        message.innerText = "Please enter a valid email.";
+        return;
+      }
+
+      if (phone && !validatePhone(phone)) {
+        message.innerText = "Please enter a valid phone number.";
+        return;
+      }
+
+      if (password.length < 6) {
+        message.innerText = "Password must be at least 6 characters.";
+        return;
+      }
+
+      if (password !== confirmPassword) {
+        message.innerText = "Passwords do not match.";
+        return;
+      }
+
+      // Simulate saving user to localStorage
+      const user = { username, email, phone };
+      localStorage.setItem("user", JSON.stringify(user));
+
+      message.style.color = "green";
+      message.innerText = "Registration successful! Redirecting...";
+
+      setTimeout(() => {
+        window.location.href = "login.html";
+      }, 1500);
+    }
+
+    function validateEmail(email) {
+      return /^[^@]+@[^@]+\.[^@]+$/.test(email);
+    }
+
+    function validatePhone(phone) {
+      return /^[0-9]{10}$/.test(phone);
+    }
+  </script>
+</body>
+</html>

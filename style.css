@@ -1,0 +1,110 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #f3f4f6;
+    color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: start;
+    padding: 40px 20px;
+  }
+  
+  .wrapper {
+    width: 100%;
+    max-width: 1000px;
+    background: #fff;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+  }
+  
+  .header {
+    text-align: center;
+    margin-bottom: 30px;
+  }
+  
+  .header .icon {
+    font-size: 48px;
+  }
+  
+  .header .title {
+    font-size: 32px;
+    margin: 10px 0;
+  }
+  
+  .subtitle {
+    font-size: 16px;
+    color: #666;
+  }
+  
+  .container.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+  }
+  
+  .card {
+    background: #f9fafb;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+  }
+  
+  .card h2 {
+    margin-bottom: 15px;
+  }
+  
+  input[type="number"],
+  input[type="email"],
+  input[type="text"],
+  input[type="password"] {
+    width: 100%;
+    padding: 10px 14px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    margin: 10px 0 15px;
+    font-size: 15px;
+  }
+  
+  input:focus {
+    border-color: #2575fc;
+    outline: none;
+  }
+  
+  .primary-btn {
+    width: 100%;
+    padding: 12px;
+    background: #2575fc;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background 0.3s;
+  }
+  
+  .primary-btn:hover {
+    background: #1a5ed7;
+  }
+  
+  .recommendation {
+    margin-top: 15px;
+    font-weight: bold;
+    color: #2c3e50;
+  }
+  
+  .checkbox-label {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .checkbox-label input {
+    margin-right: 10px;
+  }
+  
